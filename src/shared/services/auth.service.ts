@@ -82,7 +82,7 @@ export class AuthService {
             });
 
             if (userSnapshot && !userSnapshot.empty) {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/feed']);
             } else {
               alert('Usuário não encontrado.');
             }  

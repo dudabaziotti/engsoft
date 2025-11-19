@@ -9,13 +9,15 @@ import { FeedComponent } from './components/feed/feed.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FeedComponent,
-    CadastroComponent
+    CadastroComponent,
+    RecuperarSenhaComponent
   ],
   imports: [
     BrowserModule,
