@@ -1,0 +1,132 @@
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000; 
+}
+
+.modal-content {
+    background-color: white; 
+    border-radius: 8px; 
+    padding: 20px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    width: 33%;
+    max-height: 60%;
+}
+
+.modal-title {
+    font-size: 20px;
+    color: #333333;
+    margin: 10px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+        margin: 0 auto;
+        width: 90px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+}
+
+.modal-text {
+    margin: 10px 0; 
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-input {
+    margin: 0 auto;
+    font-size: 15px;
+    border: 1px solid #AB9B9B;
+    padding: 5px;
+    border-radius: 5px;
+    width: 90%;
+    outline: none;
+    
+}
+
+.modal-buttons {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    margin: 10px 0;
+
+    .modal-confirm {
+        margin: 3px 0;
+        color: white; 
+        background-color: #133C55;
+        border: none; 
+        border-radius: 10px; 
+        width: 25%;
+        padding: 5px 10px;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; 
+        outline: none;
+    }
+
+    .modal-cancel {
+        margin: 3px 0;
+        color: white; 
+        background-color: #333333;
+        border: none; 
+        border-radius: 10px; 
+        width: 25%;
+        padding: 5px 10px;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; 
+        outline: none;
+        margin-right: 5px;
+    }
+}
+.modal-message {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-size: 20px;
+    color: #070C26; 
+}
+
+
+.photo-upload{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    background-color: #f0f0f0; 
+    border: 1px solid #D3D3D3;
+}
+
+.photo-upload-label span {
+    margin-top: 10px;
+    font-size: 14px;
+}

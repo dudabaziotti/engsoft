@@ -1,1 +1,49 @@
-<p>cadastro works!</p>
+<div *ngIf="auth.showSuccessModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-title">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            Cadastro Realizado com Sucesso!
+        </div>
+        <div class="modal-text">Verifique seu email para validar a conta.</div>
+        <div class="modal-buttons">
+            <button class="modal-cancel" (click)="auth.closeSuccessModal()">Fechar</button>
+        </div>
+    </div>
+</div>
+
+<div class="page font-light">
+    <div class="body min-h-screen flex flex-col justify-center items-center">
+        <div class="flex justify-center">
+            <img src="../../../assets/logos/prisma-logo.jpg" alt="Logo" class="h-36 mb-10">
+        </div>
+        <div class="text-center -mt-14">
+            <div class="text-2xl">Bem-vindo(a)!</div>
+        </div>
+        <div class="photo-upload mt-4">
+            <input type="file" id="photo" accept="image/*" (change)="onFileChange($event)" hidden>
+            <label for="photo" class="photo-upload-label">
+                <img src="../../../assets/images/default-photo.jpg" alt="Foto do perfil" class="profile-photo">
+                <span class="text-ligth-red">Adicionar foto</span>
+            </label>
+        </div>
+        <form (ngSubmit)="cadastro()" class="w-4/12 mt-9">
+            <div class="mb-4">
+                <input type="text" class="form-control font-light w-full p-3 border border-black rounded-lg mt-1" id="name" [(ngModel)]="name" name="name" placeholder="Nome Completo" required>
+            </div>
+            <div class="mb-4">
+                <input type="email" class="form-control font-light w-full p-3 border border-black rounded-lg mt-1" id="email" [(ngModel)]="email" name="email" placeholder="E-mail" required>
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control font-light w-full p-3 border border-black rounded-lg mt-1" id="password" [(ngModel)]="password" name="password" placeholder="Senha" required>
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control font-light w-full p-3 border border-black rounded-lg mt-1" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirmar Senha" required>
+            </div>
+            <div class="input flex justify-center items-center mt-10 mb-12">
+                <button type="submit" class="p-6 bg-dark-blue text-white py-2 rounded-full hover:shadow-lg transition-shadow duration-200">
+                    Cadastrar-se
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,100 @@
-<p>login works!</p>
+<div *ngIf="auth.showBlockedModal || auth.showConfirmEmailModal || auth.showWrongModal || showEmailModal || showPasswordModal  || auth.showCadastroModal" class="modal-overlay">
+    <div class="modal-content">
+
+        <div *ngIf="auth.showBlockedModal" class="modal-title">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            Acesso negado
+        </div>
+
+        <div class="modal-title" *ngIf="auth.showConfirmEmailModal">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            E-mail não verificado
+        </div>
+
+        <div *ngIf="auth.showWrongModal" class="modal-title">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            Não foi possível entrar.
+        </div>
+
+        <div *ngIf="auth.showCadastroModal" class="modal-title">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            Usuário não encontrado
+        </div>
+
+        <div class="modal-text" *ngIf="auth.showConfirmEmailModal">
+            Verifique o seu e-mail antes de fazer login.
+        </div>
+
+        <div class="modal-text" *ngIf="auth.showWrongModal">
+            Verifique se o e-mail e a senha estão corretos e tente novamente.
+        </div>
+
+        <div class="modal-text" *ngIf="auth.showBlockedModal">
+            Infelizmente, você não é um usuário permitido no nosso sistema. Caso o cadastro ainda não tenha sido realizado, considere realizar.
+        </div>
+
+        <div class="modal-text" *ngIf="auth.showCadastroModal">
+            Você não é um usuário cadastrado no sistema. Faça seu cadastro para prosseguir.
+        </div>
+
+        <div *ngIf="showEmailModal" class="modal-title">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            Por favor, insira o email.
+        </div>
+
+        <div *ngIf="showPasswordModal" class="modal-title">
+            <img src="../../../assets/logos/prisma-logo.jpg">
+            Por favor, insira sua senha.
+        </div>
+
+        <div class="modal-buttons">
+          <button class="modal-cancel" (click)="auth.closeModal(); closeModal()">Fechar</button>
+        </div>
+    </div>
+</div>
+
+<div class="page font-light">
+    <div class="body min-h-screen flex flex-col justify-center items-center">
+        <div class="flex justify-center">
+            <img src="../../../assets/logos/prisma-logo.jpg" alt="Logo" class="h-48 mb-4">
+        </div>
+        <main class="text-center -mt-10">
+                <div class="text-3xl">Bem-vindo(a) de volta!</div>
+                <div class="text-sm flex justify-center items-center space-x-2 mt-1">
+                    <span>Não tem uma conta ainda?</span>
+                    <button (click)="cadastrar()" type="button" class="text-ligth-blue">Cadastre-se</button>
+                </div>
+        </main>
+        <form (ngSubmit)="login()" class="w-4/12 mt-9">
+            <div class="mb-4">
+                <input type="email" class="form-control w-full p-3 border border-black rounded-lg mt-1" id="email" [(ngModel)]="email" name="email" placeholder="E-mail" required>
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control w-full p-3 border border-black rounded-lg mt-1" id="password" [(ngModel)]="password" name="password" placeholder="Senha" required>
+            </div>
+            <div class="flex justify-between mb-4 ml-1 items-center">
+                <div class="flex items-center">
+                    <input type="checkbox" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe" class="mr-2">
+                    <label for="rememberMe" class="text-sm">Lembrar-me</label>
+                </div>
+                <a href="../recuperar-senha" class="text-sm hover:underline mr-1 text-ligth-blue">Esqueceu sua senha?</a>
+            </div>
+            <div class="input flex justify-center items-center mt-8 mb-2">
+                <button type="submit" class="font-extralight p-6 bg-dark-blue text-white py-2 rounded-full hover:shadow-lg transition-shadow duration-200">
+                    Entrar
+                </button>
+            </div>
+            <div class="flex justify-center items-center mt-4">
+                <div class="border-t w-5/12"></div>
+                <span class="mx-2">Ou</span>
+                <div class="border-t w-5/12"></div>
+            </div>
+            <div class="inputs mt-4 mb-12">
+                <button (click)="signInWithGoogle()" type="button" class="w-full bg-white border border-gray-300 p-3 rounded-lg text-gray-800 hover:shadow-lg transition-shadow duration-200">
+                    <img src="../../../assets/logos/icons8-google-48.png" alt="Google Logo" class="inline mr-2" style="width: 20px;">
+                    Entre com Google
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
