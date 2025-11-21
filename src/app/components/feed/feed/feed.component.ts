@@ -205,7 +205,7 @@ export class FeedComponent implements OnInit {
       return timeB - timeA; // mais novo primeiro
     });
 
-    if (JSON.stringify(this.posts) !== JSON.stringify(merged)) {
+    if (this.posts.length !== merged.length) {
       this.posts = merged;
     }
 
@@ -225,7 +225,7 @@ export class FeedComponent implements OnInit {
   loadMockPosts(): void {
     setTimeout(() => {
       this.composePosts();
-    }, 300);
+    });
   }
 
   loadPosts(): void {
@@ -242,7 +242,11 @@ export class FeedComponent implements OnInit {
       });
   }
 
-onPostCreated(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  trackByPostId(index: number, post: any) {
+    return post.id;
   }
+
+  onPostCreated(): void {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }

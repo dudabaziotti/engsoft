@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth';
 @Component({
   selector: 'app-feed-card',
   templateUrl: './feed-card.component.html',
-  styleUrls: ['./feed-card.component.scss']
+  styleUrls: ['./feed-card.component.scss'],
 })
 export class FeedCardComponent {
   @Input() post: any;

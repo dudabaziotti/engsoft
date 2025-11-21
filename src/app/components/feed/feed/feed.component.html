@@ -21,7 +21,7 @@
         </div>
 
         <app-feed-card 
-          *ngFor="let post of posts" 
+          *ngFor="let post of posts;  trackBy: trackByPostId" 
           [post]="post"
           class="post-item">
         </app-feed-card>
