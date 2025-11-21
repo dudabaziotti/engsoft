@@ -10,19 +10,20 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { NewPostComponent } from './components/feed/new-post/new-post.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RigthbarComponent } from './components/rigthbar/rigthbar.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { FeedComponent } from './components/feed/feed/feed.component';
 import { FeedCardComponent } from './components/feed/feed-card/feed-card.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    FeedComponent,
     CadastroComponent,
     RecuperarSenhaComponent,
+    FeedComponent,
     FeedCardComponent,
     NewPostComponent,
     SideBarComponent,
@@ -35,6 +36,7 @@ import { FeedCardComponent } from './components/feed/feed-card/feed-card.compone
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

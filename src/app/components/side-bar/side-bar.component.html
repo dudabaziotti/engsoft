@@ -1,1 +1,51 @@
-<p>side-bar works!</p>
+<aside class="sidebar">
+  <!-- Logo -->
+  <div class="sidebar-header">
+    <div class="logo">
+      <div class="flex justify-center">
+            <img src="../../../assets/logos/prisma-logo.jpg" alt="Logo" class="h-20">
+        </div>
+    </div>
+  </div>
+
+  <!-- Menu de navegação -->
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li *ngFor="let item of menuItems" 
+          class="nav-item"
+          [class.active]="item.active"
+          (click)="navigateTo(item)">
+        <span class="material-icons">{{ item.icon }}</span>
+        <span class="nav-label">{{ item.label }}</span>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Perfil do usuário -->
+  <div class="sidebar-footer">
+    <div class="user-profile" *ngIf="currentUser">
+      <img 
+        [src]="currentUser.photoURL || 'assets/default-avatar.png'" 
+        [alt]="currentUser.displayName"
+        class="user-avatar">
+      <div class="user-info">
+        <p class="user-name">{{ currentUser.displayName }}</p>
+        <button class="logout-button" (click)="logout()">
+          <span class="material-icons">logout</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Links do rodapé -->
+    <div class="footer-links">
+      <a href="#">Blog</a>
+      <span class="separator">•</span>
+      <a href="#">Suporte</a>
+      <span class="separator">•</span>
+      <a href="#">Ajuda</a>
+      <span class="separator">•</span>
+      <a href="#">T&C</a>
+    </div>
+    <p class="copyright">© 2025 Baziotti, Inc • v1.0</p>
+  </div>
+</aside>

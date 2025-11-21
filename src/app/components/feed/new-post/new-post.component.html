@@ -1,1 +1,44 @@
-<p>new-post works!</p>
+<div class="new-post-card">
+  <div class="new-post-header">
+    <h3>O que você está pensando?</h3>
+  </div>
+
+  <div class="new-post-body">
+    <textarea 
+      [(ngModel)]="newPostContent"
+      placeholder="Compartilhe suas ideias..."
+      class="post-textarea"
+      rows="4"
+      [disabled]="isPosting"></textarea>
+
+    <div class="image-preview" *ngIf="previewUrl">
+      <img [src]="previewUrl" alt="Preview">
+      <button class="remove-image" (click)="removeImage()" [disabled]="isPosting">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="new-post-footer">
+    <div class="post-options">
+      <label class="file-button">
+        <input 
+          type="file" 
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          [disabled]="isPosting"
+          style="display: none;">
+        <span class="material-icons">image</span>
+        <span>Foto</span>
+      </label>
+    </div>
+
+    <button 
+      class="post-button"
+      (click)="createPost()"
+      [disabled]="!newPostContent.trim() || isPosting">
+      <span *ngIf="!isPosting">Publicar</span>
+      <span *ngIf="isPosting" class="posting-spinner"></span>
+    </button>
+  </div>
+</div>

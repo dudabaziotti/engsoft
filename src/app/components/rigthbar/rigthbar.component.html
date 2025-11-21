@@ -1,1 +1,77 @@
-<p>rigthbar works!</p>
+<aside class="rightbar">
+  <!-- Barra de busca -->
+  <div class="search-section">
+    <div class="search-box">
+      <span class="material-icons search-icon">search</span>
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="searchPrisma()"
+        placeholder="Buscar no Prisma"
+        class="search-input">
+    </div>
+    
+    <div class="action-buttons">
+      <button class="icon-button" title="Notificações">
+        <span class="material-icons">notifications</span>
+        <span class="notification-badge">3</span>
+      </button>
+      <button class="icon-button" title="Presentes">
+        <span class="material-icons">card_giftcard</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Pessoas relevantes -->
+  <div class="section relevant-people">
+    <h3 class="section-title">Pessoas relevantes</h3>
+    
+    <div class="people-list">
+      <div class="person-card" *ngFor="let person of relevantPeople">
+        <img 
+          [src]="person.photoUrl" 
+          [alt]="person.name"
+          class="person-avatar">
+        <div class="person-info">
+          <h4 class="person-name">{{ person.name }}</h4>
+          <p class="person-role">{{ person.role }}</p>
+        </div>
+        <button 
+          class="follow-button"
+          [class.following]="person.following"
+          (click)="toggleFollow(person)">
+          {{ person.following ? 'Seguindo' : 'Seguir' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Posts em alta -->
+  <div class="section trending-posts">
+    <h3 class="section-title">Mais do Scroll</h3>
+    
+    <div class="posts-list">
+      <div class="trending-post" *ngFor="let post of trendingPosts" (click)="viewPost(post)">
+        <div class="post-header">
+          <span class="post-author">{{ post.author }}</span>
+          <span class="post-time">• {{ post.time }}</span>
+          <span class="post-tag" *ngIf="post.tag">{{ post.tag }}</span>
+        </div>
+        <p class="post-preview">{{ post.preview }}</p>
+        <div class="post-action">
+          <span>ver post</span>
+          <span class="material-icons">arrow_forward</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer links -->
+  <div class="rightbar-footer">
+    <div class="footer-links">
+      <a href="#">Code of Conduct</a>
+      <span class="separator">•</span>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+</aside>

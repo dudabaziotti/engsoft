@@ -1,0 +1,326 @@
+.rightbar {
+  width: 340px;
+  height: 100vh;
+  background-color: white;
+  border-left: 1px solid #e0e0e0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+}
+
+.search-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .search-box {
+    flex: 1;
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 20px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 12px 10px 40px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: #133C55;
+      }
+
+      &::placeholder {
+        color: #999;
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+
+    .icon-button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #e0e0e0;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+
+      .material-icons {
+        font-size: 20px;
+        color: #666;
+      }
+
+      &:hover {
+        background-color: #f5f5f5;
+        border-color: #133C55;
+
+        .material-icons {
+          color: #133C55;
+        }
+      }
+
+      .notification-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background-color: #ff4444;
+        color: white;
+        font-size: 10px;
+        font-weight: 600;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
+      }
+    }
+  }
+}
+
+.section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+
+  .section-title {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+}
+
+.relevant-people {
+  .people-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .person-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .person-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #f0f0f0;
+        flex-shrink: 0;
+      }
+
+      .person-info {
+        flex: 1;
+        min-width: 0;
+
+        .person-name {
+          margin: 0 0 4px;
+          font-size: 14px;
+          font-weight: 600;
+          color: #1a1a1a;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .person-role {
+          margin: 0;
+          font-size: 12px;
+          color: #666;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .follow-button {
+        padding: 6px 16px;
+        background-color: #1a1a1a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+
+        &:hover {
+          background-color: #333;
+          transform: translateY(-1px);
+        }
+
+        &.following {
+          background-color: transparent;
+          color: #666;
+          border: 1px solid #e0e0e0;
+
+          &:hover {
+            background-color: #ffebee;
+            color: #d32f2f;
+            border-color: #d32f2f;
+          }
+        }
+      }
+    }
+  }
+}
+
+.trending-posts {
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .trending-post {
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f8f8f8;
+
+        .post-action {
+          color: #133C55;
+        }
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+
+        .post-author {
+          font-size: 13px;
+          font-weight: 600;
+          color: #1a1a1a;
+        }
+
+        .post-time {
+          font-size: 12px;
+          color: #999;
+        }
+
+        .post-tag {
+          font-size: 12px;
+          color: #3d7ba1;
+          font-weight: 500;
+        }
+      }
+
+      .post-preview {
+        margin: 0 0 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .post-action {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        color: #666;
+        font-weight: 500;
+        transition: color 0.2s;
+
+        .material-icons {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.rightbar-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    a {
+      font-size: 12px;
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #3d7ba1;
+      }
+    }
+
+    .separator {
+      color: #ddd;
+      font-size: 10px;
+    }
+  }
+}
+
+// Responsivo
+@media (max-width: 1280px) {
+  .rightbar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .rightbar {
+    display: none;
+  }
+}

@@ -1,1 +1,85 @@
-<p>feed-card works!</p>
+<div class="feed-card">
+  <div class="post-header">
+    <div class="author-info">
+      <img 
+        [src]="post.author.photoUrl || 'assets/default-avatar.png'" 
+        [alt]="post.author.name"
+        class="author-avatar">
+      <div class="author-details">
+        <h3 class="author-name">{{ post.author.name }}</h3>
+        <p class="post-time">{{ getTimeAgo(getPostDate(post.createdAt)) }}</p>
+      </div>
+    </div>
+    <button class="menu-button">
+      <span class="material-icons">more_vert</span>
+    </button>
+  </div>
+
+  <div class="post-content">
+    <p>{{ post.content }}</p>
+  </div>
+
+  <div class="post-image" *ngIf="post.imageUrl">
+    <img [src]="post.imageUrl" [alt]="'Post de ' + post.author.name">
+  </div>
+
+  <div class="post-actions">
+    <button 
+      class="action-button" 
+      [class.active]="post.liked"
+      (click)="toggleLike()">
+      <span class="material-icons">{{ post.liked ? 'thumb_up' : 'thumb_up_off_alt' }}</span>
+      <span class="action-count">{{ post.likesCount }}</span>
+    </button>
+
+    <button 
+      class="action-button"
+      (click)="toggleComments()">
+      <span class="material-icons">chat_bubble_outline</span>
+      <span class="action-count">{{ post.commentsCount }}</span>
+    </button>
+
+    <button 
+      class="action-button"
+      (click)="sharePost()">
+      <span class="material-icons">share</span>
+    </button>
+  </div>
+
+  <div class="comments-section" *ngIf="showComments">
+    <div class="comments-list">
+      <div class="comment" *ngFor="let comment of comments">
+        <img 
+          [src]="comment.author.photoUrl || 'assets/default-avatar.png'" 
+          [alt]="comment.author.name"
+          class="comment-avatar">
+        <div class="comment-content">
+          <div class="comment-header">
+            <span class="comment-author">{{ comment.author.name }}</span>
+            <span class="comment-time">{{ getTimeAgo(comment.createdAt) }}</span>
+          </div>
+          <p class="comment-text">{{ comment.content }}</p>
+        </div>
+      </div>
+
+      <div class="no-comments" *ngIf="comments.length === 0">
+        <p>Seja o primeiro a comentar!</p>
+      </div>
+    </div>
+
+    <div class="add-comment">
+      <input 
+        type="text" 
+        [(ngModel)]="newComment"
+        (keyup.enter)="addComment()"
+        placeholder="Adicione um comentário..."
+        class="comment-input">
+      <button 
+        class="send-button" 
+        (click)="addComment()"
+        [disabled]="!newComment.trim()">
+        <span class="material-icons">send</span>
+      </button>
+    </div>
+  </div>
+</div>
