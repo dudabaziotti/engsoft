@@ -101,6 +101,19 @@ export class RigthbarComponent implements OnInit {
     }
   }
 
+  showNotifications = false;
+  showFriends = false;
+
+  toggleNotifications() {
+    this.showNotifications = !this.showNotifications;
+    this.showFriends = false; // fecha o outro menu
+  }
+
+  toggleFriends() {
+    this.showFriends = !this.showFriends;
+    this.showNotifications = false;
+  }
+
   viewPost(post: TrendingPost): void {
     console.log('Ver post:', post.id);
     // Navegar para o post

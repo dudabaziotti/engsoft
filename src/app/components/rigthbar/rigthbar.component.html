@@ -12,14 +12,43 @@
     </div>
     
     <div class="action-buttons">
-      <button class="icon-button" title="Notificações">
+      <button class="icon-button" title="Notificações" (click)="toggleNotifications()">
         <span class="material-icons">notifications</span>
         <span class="notification-badge">3</span>
       </button>
-      <button class="icon-button" title="Seguidores">
+      <div class="dropdown-panel" *ngIf="showNotifications">
+        <div class="notification-item">
+          <img src="https://i.pravatar.cc/150?img=12" alt="">
+          <span class="text"><strong>Maria Silva</strong> curtiu seu post.</span>
+        </div>
+
+        <div class="notification-item">
+          <img src="https://i.pravatar.cc/150?img=8" alt="">
+          <span class="text"><strong>João Santos</strong> comentou seu post.</span>
+        </div>
+
+        <div class="notification-item">
+          <img src="https://i.pravatar.cc/150?img=5" alt="">
+          <span class="text"><strong>Ana Costa</strong> começou a te seguir.</span>
+        </div>
+      </div>
+
+      <button class="icon-button" title="Seguidores" (click)="toggleFriends()">
         <span class="material-icons">person</span>
         <span class="notification-badge">2</span>
       </button>
+
+      <div class="dropdown-panel" *ngIf="showFriends">
+        <div class="followers-item">
+          <img src="https://i.pravatar.cc/150?img=6" alt="">
+          <span class="text"><strong>Laura Vieira</strong> começou a te seguir.</span>
+        </div>
+
+        <div class="followers-item">
+          <img src="https://i.pravatar.cc/150?img=9" alt="">
+          <span class="text"><strong>Pedro Klauss</strong> enviou uma solicitação.</span>
+        </div>
+      </div>
     </div>
   </div>
 
