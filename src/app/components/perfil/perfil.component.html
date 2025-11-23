@@ -25,6 +25,7 @@
 </div>
 
 
+<div class="perfil-layout">
 
 <div class="content">
 
@@ -70,7 +71,7 @@
       >
     </div>
     <div class="campos">
-      <label for="bio" class="form-label">Biograria</label>
+      <label for="bio" class="form-label">Biografia</label>
       <input 
         type="text" 
         class="form-control" 
@@ -95,5 +96,29 @@
   <div class="save">
     <button class="button-save" (click)="onSave()">Salvar</button>
   </div>
+ </div>
 
+  <div class="last-posts-container" *ngIf="lastPosts.length > 0">
+  <h3>Últimos posts</h3>
+
+  <div class="last-posts">
+    <div class="post-preview-card" *ngFor="let post of lastPosts">
+      
+      <div class="post-header">
+        <img [src]="post.author.photoUrl" class="post-avatar" />
+        <div class="post-info">
+          <span class="post-author">{{ post.author.name }}</span>
+          <span class="post-date">{{ post.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+      </div>
+
+      <p class="post-content">
+        {{ post.content.length > 120 ? (post.content | slice:0:120) + '...' : post.content }}
+      </p>
+
+      <img *ngIf="post.imageUrl" class="post-image" [src]="post.imageUrl" />
+
+    </div>
+  </div>
+</div>
 </div>

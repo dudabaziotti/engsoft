@@ -217,6 +217,7 @@ export class AuthService {
     ).toPromise();
   }
 
+
   activateUser(userId: string): Promise<void> {
     return this.fireauth.authState.pipe(
       switchMap(user => {

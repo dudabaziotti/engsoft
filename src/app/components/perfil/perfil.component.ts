@@ -22,6 +22,7 @@ export class PerfilComponent implements OnInit {
   modalError = false;
   modalSave = false;
   modalInvalidForm = false;
+  lastPosts: any[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +33,9 @@ export class PerfilComponent implements OnInit {
     this.perfilForm = this.fb.group({
       name: ['', Validators.required],
       email: [{ value: '', disabled: true }, Validators.required],
-      photoUrl: ['']
+      photoUrl: [''],
+      bio: [''],
+      interesse: ['']
     });
   }
 
@@ -65,7 +68,23 @@ export class PerfilComponent implements OnInit {
           });
         }
       });
+      this.loadLastPosts(this.uid);
+      
   }
+
+  loadLastPosts(uid: string) {
+  this.db.collection('posts', ref =>
+      ref.where('author.uid', '==', uid).orderBy('createdAt', 'desc').limit(2)
+    )
+    .valueChanges({ idField: 'id' })
+    .subscribe((posts: any[]) => {
+      this.lastPosts = posts.map(p => ({
+        ...p,
+        createdAt: p.createdAt?.toDate ? p.createdAt.toDate() : new Date()
+      }));
+    });
+}
+
 
   async onSave(): Promise<void> {
     if (!this.uid) {

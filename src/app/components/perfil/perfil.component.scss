@@ -1,4 +1,4 @@
-/* === MODAL === */
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -21,8 +21,6 @@
 .modal-title {
   font-size: 25px;
   font-weight: 600;
-  color: black;
-  margin: 10px 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -44,7 +42,7 @@
 .modal-buttons {
   display: flex;
   justify-content: center;
-  margin: 40px 0 10px 0;
+  margin-top: 30px;
 
   .modal-confirm {
     background: #133C55;
@@ -57,29 +55,35 @@
   }
 }
 
-:host {
+
+/* ==== LAYOUT GERAL ==== */
+.perfil-layout {
   display: flex;
+  gap: 40px;
   justify-content: center;
-  padding-top: 40px;
   width: 100%;
+  padding-top: 40px;
+  margin-left: 260px; 
 }
 
 
-.content {
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #ada9a9;
-  width: 480px;
+.last-posts-container {
   background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  width: 460px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
+
 
 
 .title {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 15px;
+  text-align: center;
 }
-
 
 .photo {
   padding: 20px 0;
@@ -96,14 +100,12 @@
   }
 
   .photo-button {
-    margin-top: 10px;
     background-color: #dbdbdb;
     padding: 6px 18px;
     border-radius: 10px;
     cursor: pointer;
   }
 }
-
 
 .campos {
   display: flex;
@@ -120,8 +122,8 @@
   border: 1px solid #ada9a9;
   border-radius: 10px;
   padding: 10px;
-  outline: none;
   background: #fafafa;
+  outline: none;
 }
 
 .save {
@@ -136,4 +138,71 @@
     border-radius: 10px;
     cursor: pointer;
   }
+}
+
+
+.last-posts-container h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.last-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-preview-card {
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 12px;
+  background: #fff;
+  transition: 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  }
+}
+
+.post-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .post-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .post-info {
+    display: flex;
+    flex-direction: column;
+
+    .post-author {
+      font-weight: 600;
+    }
+
+    .post-date {
+      font-size: 12px;
+      color: #777;
+    }
+  }
+}
+
+.post-content {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 180px;
+  object-fit: cover;
 }
