@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { FeedComponent } from './components/feed/feed/feed.component';
 import { FeedCardComponent } from './components/feed/feed-card/feed-card.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     NewPostComponent,
     SideBarComponent,
     RigthbarComponent,
-    CommentsComponent
+    CommentsComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

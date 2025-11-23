@@ -30,6 +30,8 @@ export class FeedComponent implements OnInit {
   currentUser: any = null;
   useMockData: boolean = true; // Altere para false quando quiser usar dados reais do Firestore
   auth = getAuth();
+  searchTerm: string = '';
+  filteredPosts: Post[] = [];
 
   constructor(private firestore: AngularFirestore) {}
 
@@ -40,6 +42,27 @@ export class FeedComponent implements OnInit {
   }
 
     this.subscribeToRealPosts(); // sempre por último
+  }
+
+  applyFilter() {
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.filteredPosts = [...this.posts];
+      return;
+    }
+
+    const term = this.searchTerm.toLowerCase();
+
+    if (term.startsWith('#')) {
+      const clean = term.substring(1); 
+
+      this.filteredPosts = this.posts.filter(post => 
+        post.content.toLowerCase().includes('#' + clean)
+      );
+    } else {
+      this.filteredPosts = this.posts.filter(post =>
+        post.content.toLowerCase().includes(term)
+      );
+    }
   }
 
 
@@ -72,7 +95,7 @@ export class FeedComponent implements OnInit {
         photoUrl: 'https://i.pravatar.cc/150?img=5',
         role: 'Product Designer'
       },
-      content: 'Acabei de lançar meu novo projeto de design system! Foram 3 meses de trabalho intenso, mas o resultado ficou incrível. Obrigada a todos que ajudaram no processo. 🎨✨',
+      content: 'Acabei de lançar meu novo projeto de design system! Foram 3 meses de trabalho intenso, mas o resultado ficou incrível. Obrigada a todos que ajudaram no processo. 🎨✨ #design',
       createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 horas atrás
       likesCount: 42,
       commentsCount: 8,
@@ -86,7 +109,7 @@ export class FeedComponent implements OnInit {
         photoUrl: 'https://i.pravatar.cc/150?img=12',
         role: 'Full Stack Developer'
       },
-      content: 'Compartilhando minha jornada de aprendizado em React! Criei este tutorial completo sobre hooks que pode ajudar muita gente. O que acham? Feedback é sempre bem-vindo! 💻',
+      content: 'Compartilhando minha jornada de aprendizado em React! Criei este tutorial completo sobre hooks que pode ajudar muita gente. O que acham? Feedback é sempre bem-vindo! 💻 #react',
       createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 horas atrás
       likesCount: 87,
       commentsCount: 15,
@@ -220,12 +243,19 @@ export class FeedComponent implements OnInit {
 
     this.posts = onlyReal;
   }
+    this.filteredPosts = [...this.posts];
+    this.applyFilter();
   }
 
   loadMockPosts(): void {
     setTimeout(() => {
       this.composePosts();
     });
+  }
+
+  onSearchChanged(value: string) {
+    this.searchTerm = value;
+    this.applyFilter();
   }
 
   loadPosts(): void {

@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { FeedComponent } from './components/feed/feed/feed.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'recuperar-senha', component: RecuperarSenhaComponent },
   { path: 'feed', component: FeedComponent },
+  { path: 'perfil', component: PerfilComponent },
 ];
 
 @NgModule({

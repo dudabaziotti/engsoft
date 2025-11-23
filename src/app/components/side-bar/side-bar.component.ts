@@ -13,8 +13,8 @@ export class SideBarComponent implements OnInit {
   menuItems = [
     { icon: 'home', label: 'Feed', route: '/feed', active: true },
     { icon: 'inbox', label: 'Mensagens', route: '/inbox', active: false },
-    { icon: 'search', label: 'Buscar', route: '/search', active: false },
-    { icon: 'people', label: 'Minha Rede', route: '/network', active: false }
+    { icon: 'people', label: 'Minha Rede', route: '/network', active: false },
+    { icon: 'person', label: 'Perfil', route: '/perfil', active: false },
   ];
 
   constructor(private router: Router) {}

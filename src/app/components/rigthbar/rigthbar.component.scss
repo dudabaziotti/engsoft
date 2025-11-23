@@ -1,5 +1,5 @@
 .rightbar {
-  width: 340px;
+  width: 450px;
   height: 100vh;
   background-color: white;
   border-left: 1px solid #e0e0e0;
@@ -10,7 +10,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -125,9 +125,16 @@
   border: 1px solid #f0f0f0;
 
   .section-title {
-    margin: 0 0 16px;
+    margin: 0 0 8px;
     font-size: 16px;
     font-weight: 600;
+    color: #1a1a1a;
+  }
+
+    .section-subtitle {
+    margin: -10px 0 0 0px;
+    font-size: 14px;
+    font-weight: 400;
     color: #1a1a1a;
   }
 }
@@ -144,8 +151,8 @@
       gap: 12px;
 
       .person-avatar {
-        width: 48px;
-        height: 48px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid #f0f0f0;
@@ -213,7 +220,7 @@
   .posts-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+
 
     .trending-post {
       padding: 12px;

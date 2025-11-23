@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 interface RelevantPerson {
@@ -24,27 +24,32 @@ interface TrendingPost {
 })
 export class RigthbarComponent implements OnInit {
   searchQuery: string = '';
+  @Output() searchChanged = new EventEmitter<string>();
+
+  onSearch(event: any) {
+    this.searchChanged.emit(event.target.value);
+  }
   
   relevantPeople: RelevantPerson[] = [
     {
       id: '1',
-      name: 'Akash Bhadange',
-      photoUrl: 'https://i.pravatar.cc/150?img=1',
-      role: 'Cofounder and CEO at Peerlist',
+      name: 'Eduarda Baziotti',
+      photoUrl: 'assets/images/gato.png',
+      role: 'Engenharia - Front-End Developer',
       following: false
     },
     {
       id: '2',
-      name: 'Swapnil Patil',
-      photoUrl: 'https://i.pravatar.cc/150?img=2',
-      role: 'Full Stack Developer',
+      name: 'Iris Dias Pires',
+      photoUrl: 'assets/images/alpaca.png',
+      role: 'Engenharia - Layout de PCB',
       following: false
     },
     {
       id: '3',
-      name: 'Maria Silva',
-      photoUrl: 'https://i.pravatar.cc/150?img=3',
-      role: 'Product Designer',
+      name: 'Juninho Baziotti',
+      photoUrl: 'assets/images/ra.png',
+      role: 'Engenharia - Controle e Automação',
       following: false
     }
   ];
@@ -52,25 +57,25 @@ export class RigthbarComponent implements OnInit {
   trendingPosts: TrendingPost[] = [
     {
       id: '1',
-      author: 'Ankur Syal',
-      time: '22h ago',
+      author: 'Laura Vieira',
+      time: '2 dias atrás',
       preview: 'This was the peak of electronics. This was also my family\'s first touch screen mobile.',
-      tag: '#show'
+      tag: '#aviacao'
     },
     {
       id: '2',
-      author: 'Tanishq Singla',
+      author: 'Pedro Klauss',
       time: '22h ago',
       preview: 'Added a link to my collection - Weekly shelf',
-      tag: '#show'
+      tag: '#quimica'
     },
-    {
+        {
       id: '3',
-      author: 'Ankur Syal',
-      time: '23h ago',
-      preview: 'What\'s the effect of the site missing the \'index/follow\' tag.?',
-      tag: '#ask'
-    }
+      author: 'Livia Mendes',
+      time: '5 dias atrás',
+      preview: 'Added a link to my collection - Weekly shelf',
+      tag: '#biologia'
+    },
   ];
 
   constructor(private firestore: AngularFirestore) {}

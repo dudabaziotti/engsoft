@@ -21,7 +21,7 @@
         </div>
 
         <app-feed-card 
-          *ngFor="let post of posts;  trackBy: trackByPostId" 
+          *ngFor="let post of filteredPosts;  trackBy: trackByPostId" 
           [post]="post"
           class="post-item">
         </app-feed-card>
@@ -34,5 +34,5 @@
   </main>
 
   <!-- Rightbar direita -->
-  <app-rigthbar></app-rigthbar>
+<app-rigthbar app-rigthbar (searchChanged)="onSearchChanged($event)"></app-rigthbar>
 </div>

@@ -1,0 +1,99 @@
+<app-side-bar></app-side-bar>
+<div *ngIf="modalSave || modalError || modalInvalidForm" class="modal-overlay">
+  <div class="modal-content">
+
+    <div class="modal-title">
+      <img src="../../../assets/logos/prisma-logo.jpg" alt="Logo">
+
+      <p *ngIf="modalSave">Dados salvos com sucesso!</p>
+      <p *ngIf="modalError">Algo deu errado</p>
+      <p *ngIf="modalInvalidForm">Formulário inválido</p>
+    </div>
+
+    <div class="modal-text">
+      <p *ngIf="modalError">Tente novamente mais tarde.</p>
+      <p *ngIf="modalInvalidForm">
+        Certifique-se de que todos os campos foram preenchidos corretamente.
+      </p>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="modal-confirm" (click)="closeModal()">Fechar</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="content">
+
+  <p class="title">Informações do Perfil</p>
+
+  <div class="photo">
+    <span class="user-name">{{ perfilForm.get('name')?.value }}</span>
+
+    <img 
+      [src]="photoUrl ? photoUrl : 'assets/images/default-photo.jpg'" 
+      class="profile-photo" 
+      alt="Foto de Perfil"
+    >
+
+    <button class="photo-button" (click)="openFileDialog($event)">
+      Mudar Foto
+    </button>
+
+    <input #fileInput type="file" accept="image/*" (change)="onFileChange($event)" hidden>
+  </div>
+
+
+  <form class="form" [formGroup]="perfilForm">
+    <div class="campos">
+      <label for="name" class="form-label">Nome Completo</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        formControlName="name" 
+        placeholder="Digite seu nome"
+      >
+    </div>
+
+    <div class="campos">
+      <label for="email" class="form-label">E-mail</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="email" 
+        formControlName="email"
+        placeholder="E-mail"
+      >
+    </div>
+    <div class="campos">
+      <label for="bio" class="form-label">Biograria</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="bio" 
+        formControlName="bio"
+        placeholder="Fale um pouco sobre você!"
+      >
+    </div>
+    <div class="campos">
+      <label for="interesse" class="form-label">Área de Interesse</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="interesse" 
+        formControlName="interesse"
+        placeholder="#engenharia, #biologia, #artes..."
+      >
+    </div>
+  </form>
+
+
+  <div class="save">
+    <button class="button-save" (click)="onSave()">Salvar</button>
+  </div>
+
+</div>
