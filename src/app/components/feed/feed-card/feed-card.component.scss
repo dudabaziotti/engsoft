@@ -1,6 +1,7 @@
 .feed-card {
   background: white;
   border-radius: 12px;
+  position: relative;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(89, 59, 59, 0.1);
   transition: box-shadow 0.2s;
@@ -9,6 +10,35 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
 }
+
+  .post-menu {
+    position: absolute;
+    right: 10px;
+    top: 45px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    z-index: 50;
+
+    button {
+      background: none;
+      border: none;
+      padding: 10px;
+      text-align: left;
+      cursor: pointer;
+
+      &:hover {
+        background: #f2f2f2;
+      }
+    }
+
+    .delete {
+      color: #c62828;
+    }
+  }
 
 .post-header {
   display: flex;
@@ -314,6 +344,55 @@
       .material-icons {
         font-size: 18px;
       }
+    }
+  }
+}
+
+.edit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.edit-modal {
+  background: white;
+  padding: 20px;
+  width: 400px;
+  border-radius: 12px;
+
+  textarea {
+    width: 100%;
+    height: 130px;
+    border-radius: 8px;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+
+    .cancel {
+      background: #ccc;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .save {
+      background: #133C55;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
     }
   }
 }

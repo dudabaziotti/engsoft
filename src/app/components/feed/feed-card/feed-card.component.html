@@ -10,9 +10,14 @@
         <p class="post-time">{{ getTimeAgo(getPostDate(post.createdAt)) }}</p>
       </div>
     </div>
-    <button class="menu-button">
+    <button class="menu-button" (click)="toggleMenu()">
       <span class="material-icons">more_vert</span>
     </button>
+    <div class="post-menu" *ngIf="menuOpen && isMyPost()">
+      <button class="menu-item" (click)="openEditModal()">Editar post</button>
+      <button class="menu-item delete" (click)="deletePost()">Excluir post</button>
+    </div>
+
   </div>
 
   <div class="post-content">
@@ -80,6 +85,19 @@
         [disabled]="!newComment.trim()">
         <span class="material-icons">send</span>
       </button>
+    </div>
+  </div>
+</div>
+
+<div class="edit-overlay" *ngIf="editModalOpen">
+  <div class="edit-modal">
+    <h3>Editar Post</h3>
+
+    <textarea [(ngModel)]="editContent"></textarea>
+
+    <div class="modal-actions">
+      <button class="cancel" (click)="closeEditModal()">Cancelar</button>
+      <button class="save" (click)="saveEdit()">Salvar</button>
     </div>
   </div>
 </div>

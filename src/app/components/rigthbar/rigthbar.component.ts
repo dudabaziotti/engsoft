@@ -14,6 +14,7 @@ interface TrendingPost {
   author: string;
   time: string;
   preview: string;
+  likes: number;
   tag?: string;
 }
 
@@ -60,6 +61,7 @@ export class RigthbarComponent implements OnInit {
       author: 'Laura Vieira',
       time: '2 dias atrás',
       preview: 'This was the peak of electronics. This was also my family\'s first touch screen mobile.',
+      likes: 443,
       tag: '#aviacao'
     },
     {
@@ -67,6 +69,7 @@ export class RigthbarComponent implements OnInit {
       author: 'Pedro Klauss',
       time: '22h ago',
       preview: 'Added a link to my collection - Weekly shelf',
+      likes: 320,
       tag: '#quimica'
     },
         {
@@ -74,6 +77,7 @@ export class RigthbarComponent implements OnInit {
       author: 'Livia Mendes',
       time: '5 dias atrás',
       preview: 'Added a link to my collection - Weekly shelf',
+      likes: 289,
       tag: '#biologia'
     },
   ];

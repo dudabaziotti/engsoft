@@ -14,20 +14,66 @@ export class FeedCardComponent {
   newComment: string = '';
   comments: any[] = [];
   loadingLike = false;
+  menuOpen = false;
+  editModalOpen = false;
+  editContent = '';
 
   constructor(private firestore: AngularFirestore) {}
 
   ngOnChanges() {
-  if (this.post) {
-    this.post = { ...this.post };
+    if (this.post) {
+      this.post = { ...this.post };
+    }
   }
-}
 
+  isMyPost(): boolean {
+    const user = this.auth.currentUser;
+    return !!(user && this.post?.author?.uid === user.uid);
+  }
   getPostDate(timestamp: any): Date {
     if (timestamp?.toDate) {
       return timestamp.toDate();
     }
-    return new Date(timestamp);
+      return new Date(timestamp);
+    }
+
+    toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  openEditModal() {
+    this.editContent = this.post.content;
+    this.editModalOpen = true;
+    this.menuOpen = false;
+  }
+
+  closeEditModal() {
+    this.editModalOpen = false;
+  }
+
+  async saveEdit() {
+    if (!this.editContent.trim() || !this.post?.id) return;
+
+    try {
+      await this.firestore
+        .collection('posts')
+        .doc(this.post.id)
+        .update({ content: this.editContent });
+
+      // Atualiza o post na tela
+      this.post.content = this.editContent;
+
+      this.editModalOpen = false;
+    } catch (e) {
+      console.error('Erro ao salvar edição:', e);
+      // aqui você pode abrir um modal de erro se quiser
+    }
+  }
+
+  deletePost() {
+    if (!confirm('Tem certeza que deseja excluir este post?')) return;
+
+    this.firestore.collection('posts').doc(this.post.id).delete();
   }
 
   getTimeAgo(date: Date): string {
@@ -65,33 +111,45 @@ export class FeedCardComponent {
       });
   }
 
-  async toggleLike() {
-    if (this.loadingLike || !this.post?.id) return;
+async toggleLike() {
+  if (this.loadingLike || !this.post?.id) return;
 
-    const user = this.auth.currentUser;
-    if (!user) return;
+  const user = this.auth.currentUser;
+  if (!user) return;
 
-    this.loadingLike = true;
-    const likeRef = this.firestore.doc(`posts/${this.post.id}/likes/${user.uid}`);
+  this.loadingLike = true;
+  const likeRef = this.firestore.doc(`posts/${this.post.id}/likes/${user.uid}`);
 
-    const alreadyLiked = this.post.liked === true;
+  const alreadyLiked = this.post.liked === true;
+  const postRef = this.firestore.collection('posts').doc(this.post.id);
 
-    try {
-      if (!alreadyLiked) {
-        await likeRef.set({ userId: user.uid });
-        this.post.likesCount++;
-        this.post.liked = true;
-      } else {
-        await likeRef.delete();
-        this.post.likesCount--;
-        this.post.liked = false;
-      }
-    } catch (error) {
-      console.error("Erro ao alterar like:", error);
+  try {
+    if (!alreadyLiked) {
+      await likeRef.set({ userId: user.uid });
+
+      await postRef.update({
+        likesCount: this.post.likesCount + 1
+      });
+
+      this.post.likesCount++;
+      this.post.liked = true;
+
+    } else {
+      await likeRef.delete();
+
+      await postRef.update({
+        likesCount: this.post.likesCount - 1
+      });
+
+      this.post.likesCount--;
+      this.post.liked = false;
     }
-
-    this.loadingLike = false;
+  } catch (error) {
+    console.error("Erro ao alterar like:", error);
   }
+
+  this.loadingLike = false;
+}
 
   addComment(): void {
     const user = getAuth().currentUser;
