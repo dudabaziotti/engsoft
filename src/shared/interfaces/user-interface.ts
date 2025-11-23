@@ -8,5 +8,7 @@ export interface UserInterface {
     photoUrl?: string,
     isActive: boolean,
     lastLogin: firebase.firestore.Timestamp | firebase.firestore.FieldValue | string,
-    tipo: string
+    tipo: string,
+    bio: string,
+    interesse: string
 }

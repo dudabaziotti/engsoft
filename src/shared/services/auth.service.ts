@@ -109,7 +109,9 @@ export class AuthService {
       photoUrl: user.photoURL || '',
       isActive: true,
       tipo: "Usuario",
-      lastLogin: createdAt
+      lastLogin: createdAt,
+      bio: user.bio,
+      interesse: user.interesse
     };
 
     await this.firestore.collection('users').doc(user.uid).set(userData);

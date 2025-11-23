@@ -12,8 +12,7 @@ export class SideBarComponent implements OnInit {
 
   menuItems = [
     { icon: 'home', label: 'Feed', route: '/feed', active: true },
-    { icon: 'inbox', label: 'Mensagens', route: '/inbox', active: false },
-    { icon: 'people', label: 'Minha Rede', route: '/network', active: false },
+    { icon: 'timer', label: 'Sala de Foco', route: '/focus-room', active: false },
     { icon: 'person', label: 'Perfil', route: '/perfil', active: false },
   ];
 
@@ -21,6 +20,13 @@ export class SideBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = getAuth().currentUser;
+    this.router.events.subscribe(() => {
+    const currentRoute = this.router.url;
+
+    this.menuItems.forEach(item => {
+      item.active = currentRoute.startsWith(item.route);
+    });
+  });
   }
 
   navigateTo(item: any): void {

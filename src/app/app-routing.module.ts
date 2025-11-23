@@ -5,6 +5,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { FeedComponent } from './components/feed/feed/feed.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { FocusRoomComponent } from './components/focus/focus-room/focus-room.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'recuperar-senha', component: RecuperarSenhaComponent },
   { path: 'feed', component: FeedComponent },
   { path: 'perfil', component: PerfilComponent },
+  { path: 'focus-room', component: FocusRoomComponent},
 ];
 
 @NgModule({

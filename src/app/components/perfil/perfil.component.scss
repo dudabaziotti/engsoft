@@ -56,45 +56,50 @@
 }
 
 
-/* ==== LAYOUT GERAL ==== */
+
 .perfil-layout {
   display: flex;
-  gap: 40px;
   justify-content: center;
-  width: 100%;
+  gap: 40px;
   padding-top: 40px;
-  margin-left: 260px; 
+  width: calc(100% - 350px);
+  margin-left: 350px;
+  align-items: stretch;
+  overflow: hidden;
 }
-
-
-.last-posts-container {
+.card-box {
+  width: 460px;
+  padding: 25px;
   background: white;
-  padding: 20px;
   border-radius: 12px;
   border: 1px solid #dcdcdc;
-  width: 460px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
+.content {
+  @extend .card-box;
+}
 
-
+/* Título */
 .title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 15px;
   text-align: center;
 }
 
+/* Foto */
 .photo {
-  padding: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 
   .profile-photo {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -107,10 +112,10 @@
   }
 }
 
+/* Campos */
 .campos {
   display: flex;
   flex-direction: column;
-  margin-top: 12px;
 }
 
 .form-label {
@@ -126,12 +131,12 @@
   outline: none;
 }
 
+/* Botão salvar */
 .save {
   display: flex;
   justify-content: center;
 
   .button-save {
-    margin-top: 20px;
     background-color: #133C55;
     color: white;
     padding: 8px 32px;
@@ -141,10 +146,15 @@
 }
 
 
-.last-posts-container h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
+.last-posts-container {
+  @extend .card-box;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    padding-bottom: 10px;
+  }
 }
 
 .last-posts {
@@ -156,10 +166,10 @@
 .post-preview-card {
   border: 1px solid #e0e0e0;
   padding: 15px;
-  border-radius: 12px;
-  background: #fff;
-  transition: 0.2s ease;
+  border-radius: 10px;
+  background: white;
   cursor: pointer;
+  transition: 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -171,7 +181,6 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-bottom: 10px;
 
   .post-avatar {
     width: 42px;
@@ -196,8 +205,8 @@
 }
 
 .post-content {
+  margin: 8px 0;
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
 .post-image {

@@ -1,0 +1,35 @@
+<app-side-bar></app-side-bar>
+
+<div class="focus-page">
+
+  <div *ngIf="!sessionStarted" class="select-card">
+
+    <h2>Entrar na Sessão de Foco</h2>
+
+    <p class="fixed-info">
+      Tempo de foco: <strong>{{ duration }} minutos</strong><br>
+      Tempo de descanso: <strong>{{ breakTime }} minutos</strong>
+    </p>
+
+    <button class="start-button" (click)="startSession()">Entrar</button>
+
+  </div>
+
+  <div *ngIf="sessionStarted" class="focus-room-container">
+
+    <div class="focus-card">
+      <div class="timer-display">{{ minutes }}:{{ seconds | number:'2.0' }}</div>
+      <div class="timer-label">Tempo restante</div>
+
+      <h3>Participantes</h3>
+      <div class="user-list">
+        <div class="user" *ngFor="let u of users">
+          <img [src]="u.photoUrl">
+          <span>{{ u.name }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

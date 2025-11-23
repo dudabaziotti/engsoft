@@ -64,7 +64,9 @@ export class PerfilComponent implements OnInit {
           this.perfilForm.patchValue({
             name: user.name || '',
             email: user.email || '',
-            photoUrl: this.photoUrl || ''
+            photoUrl: this.photoUrl || '',
+            bio: user.bio || '',
+            interesse: user.interesse || ''
           });
         }
       });

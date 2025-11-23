@@ -17,6 +17,8 @@ import { FeedCardComponent } from './components/feed/feed-card/feed-card.compone
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { CommonModule, DecimalPipe} from '@angular/common';
+import { FocusRoomComponent } from './components/focus/focus-room/focus-room.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     SideBarComponent,
     RigthbarComponent,
     CommentsComponent,
-    PerfilComponent
+    PerfilComponent,
+    FocusRoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +42,10 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
