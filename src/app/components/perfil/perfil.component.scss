@@ -55,8 +55,6 @@
   }
 }
 
-
-
 .perfil-layout {
   display: flex;
   justify-content: center;
@@ -83,14 +81,12 @@
   @extend .card-box;
 }
 
-/* Título */
 .title {
   font-size: 20px;
   font-weight: 600;
   text-align: center;
 }
 
-/* Foto */
 .photo {
   display: flex;
   flex-direction: column;
@@ -112,11 +108,26 @@
   }
 }
 
-/* Campos */
 .campos {
   display: flex;
   flex-direction: column;
 }
+
+.seguidores {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  font-size: 16px;
+  margin-top: 10px;
+}
+  .seguidores p {
+    margin: 0;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
 
 .form-label {
   font-size: 14px;
@@ -131,7 +142,6 @@
   outline: none;
 }
 
-/* Botão salvar */
 .save {
   display: flex;
   justify-content: center;

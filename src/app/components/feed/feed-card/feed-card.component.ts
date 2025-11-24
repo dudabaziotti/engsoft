@@ -60,13 +60,11 @@ export class FeedCardComponent {
         .doc(this.post.id)
         .update({ content: this.editContent });
 
-      // Atualiza o post na tela
       this.post.content = this.editContent;
 
       this.editModalOpen = false;
     } catch (e) {
       console.error('Erro ao salvar edição:', e);
-      // aqui você pode abrir um modal de erro se quiser
     }
   }
 
@@ -178,5 +176,11 @@ async toggleLike() {
 
   sharePost(): void {
     console.log('Compartilhar post:', this.post.id);
+  }
+
+  removeFile(post: any): void {
+    post.pdfUrl = '';
+    post.pdfName = '';
+    this.firestore.collection('posts').doc(post.id).update({ pdfUrl: '' });
   }
 }

@@ -28,6 +28,14 @@
     <img [src]="post.imageUrl" [alt]="'Post de ' + post.author.name">
   </div>
 
+  <div *ngIf="post.pdfUrl" class="pdf-preview">
+    <span class="material-icons">attach_file</span>
+    <span>{{ post.pdfName }}</span>
+    <button class="remove-file" (click)="removeFile(post)">
+      <span class="material-icons">close</span>
+    </button>
+  </div>
+
   <div class="post-actions">
     <button 
       class="action-button" 

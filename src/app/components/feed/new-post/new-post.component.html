@@ -11,9 +11,19 @@
       rows="4"
       [disabled]="isPosting"></textarea>
 
-    <div class="image-preview" *ngIf="previewUrl">
-      <img [src]="previewUrl" alt="Preview">
+    <div class="image-preview" *ngIf="imagePreviewUrl">
+      <img [src]="imagePreviewUrl" alt="Preview">
       <button class="remove-image" (click)="removeImage()" [disabled]="isPosting">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <div class="file-preview" *ngIf="selectedPdfFile">
+      <div class="file-icon">
+        <span class="material-icons">attach_file</span>
+      </div>
+      <p class="file-name">{{ selectedPdfFile.name }}</p>
+      <button class="remove-file" (click)="removePdf()" [disabled]="isPosting">
         <span class="material-icons">close</span>
       </button>
     </div>
@@ -31,7 +41,17 @@
         <span class="material-icons">image</span>
         <span>Foto</span>
       </label>
-    </div>
+    <label class="file-button">
+      <input 
+        type="file" 
+        accept=".pdf"
+        (change)="onPdfSelected($event)"
+        [disabled]="isPosting"
+        style="display: none;">
+      <span class="material-icons">attach_file</span>
+      <span>PDF</span>
+    </label>
+  </div>
 
     <button 
       class="post-button"
