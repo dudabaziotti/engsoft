@@ -6,7 +6,9 @@
         [alt]="post.author.name"
         class="author-avatar">
       <div class="author-details">
-        <h3 class="author-name">{{ post.author.name }}</h3>
+        <h3 class="author-name">
+          {{ isMyPost() ? currentUserName : post.author.name }}
+        </h3>
         <p class="post-time">{{ getTimeAgo(getPostDate(post.createdAt)) }}</p>
       </div>
     </div>

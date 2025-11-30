@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-
+import { updateProfile } from "firebase/auth";
 import { UserInterface } from '../../../shared/interfaces/user-interface';
 import { AuthService } from '../../../shared/services/auth.service';
 
@@ -89,25 +89,35 @@ export class PerfilComponent implements OnInit {
 
 
   async onSave(): Promise<void> {
-    if (!this.uid) {
-      this.modalError = true;
-      return;
-    }
-
-    if (this.perfilForm.valid) {
-      const cleanedData = this.cleanData(this.perfilForm.getRawValue());
-
-      try {
-        await this.db.collection('users').doc(this.uid).update(cleanedData);
-        this.modalSave = true;
-      } catch (error) {
-        console.error('Erro ao atualizar perfil:', error);
-        this.modalError = true;
-      }
-    } else {
-      this.modalInvalidForm = true;
-    }
+  if (!this.uid) {
+    this.modalError = true;
+    return;
   }
+
+  if (this.perfilForm.valid) {
+    const cleanedData = this.cleanData(this.perfilForm.getRawValue());
+
+    try {
+      await this.db.collection('users').doc(this.uid).update(cleanedData);
+
+      const userAuth = await this.auth.getCurrentUserAsync();
+      if (userAuth) {
+        await updateProfile(userAuth, {
+          displayName: cleanedData['name'],
+          photoURL: cleanedData['photoUrl']
+        });
+      }
+
+      this.modalSave = true;
+
+    } catch (error) {
+      console.error('Erro ao atualizar perfil:', error);
+      this.modalError = true;
+    }
+  } else {
+    this.modalInvalidForm = true;
+  }
+}
 
   closeModal(): void {
     this.modalError = false;

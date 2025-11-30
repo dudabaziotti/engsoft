@@ -9,6 +9,7 @@ import { getAuth } from 'firebase/auth';
 })
 export class FeedCardComponent {
   @Input() post: any;
+  @Input() currentUser: any;
   auth = getAuth();
   showComments: boolean = false;
   newComment: string = '';
@@ -17,8 +18,12 @@ export class FeedCardComponent {
   menuOpen = false;
   editModalOpen = false;
   editContent = '';
+  currentUserName = '';
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) {
+    const u = this.auth.currentUser;
+    this.currentUserName = u?.displayName || '';
+  }
 
   ngOnChanges() {
     if (this.post) {

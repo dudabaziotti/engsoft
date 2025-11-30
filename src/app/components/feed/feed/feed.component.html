@@ -23,6 +23,7 @@
         <app-feed-card 
           *ngFor="let post of filteredPosts;  trackBy: trackByPostId" 
           [post]="post"
+          [currentUser]="currentUser"
           class="post-item">
         </app-feed-card>
 
