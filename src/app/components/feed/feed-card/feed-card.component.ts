@@ -26,6 +26,10 @@ export class FeedCardComponent {
     }
   }
 
+  isStaticPost(): boolean {
+    return this.post?.isStatic === true || !this.post?.id;
+  }
+
   isMyPost(): boolean {
     const user = this.auth.currentUser;
     return !!(user && this.post?.author?.uid === user.uid);
@@ -110,7 +114,11 @@ export class FeedCardComponent {
   }
 
 async toggleLike() {
-  if (this.loadingLike || !this.post?.id) return;
+  if (this.isStaticPost()) {
+  this.post.liked = !this.post.liked;
+  this.post.likesCount += this.post.liked ? 1 : -1;
+  return;
+}
 
   const user = this.auth.currentUser;
   if (!user) return;

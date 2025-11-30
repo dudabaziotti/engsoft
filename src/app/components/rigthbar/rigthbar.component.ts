@@ -62,7 +62,7 @@ export class RigthbarComponent implements OnInit {
       time: '2 dias atrás',
       preview: 'Nessa semana, tive a oportunidade de conhecer a maior empresa fabricante de componentes do Brasil!',
       likes: 443,
-      tag: '#aviacao'
+      tag: '#eletronica'
     },
     {
       id: '2',
@@ -70,7 +70,7 @@ export class RigthbarComponent implements OnInit {
       time: '22h ago',
       preview: 'Estive trabalhando com a integração de bibliotecas em sistemas front-end e gostaria de compartilhar com a rede!',
       likes: 320,
-      tag: '#quimica'
+      tag: '#front-end'
     },
         {
       id: '3',
@@ -78,7 +78,7 @@ export class RigthbarComponent implements OnInit {
       time: '5 dias atrás',
       preview: 'Na maratona de programação, aprendemos diversas técnincas e diferentes soluções para problemas complexos.',
       likes: 289,
-      tag: '#biologia'
+      tag: '#maratona'
     },
   ];
 

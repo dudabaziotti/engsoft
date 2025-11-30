@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { getAuth } from 'firebase/auth';
 
 interface Post {
+  isStatic: boolean,
   id?: string;
   author: {
     name: string;
@@ -89,6 +90,7 @@ export class FeedComponent implements OnInit {
   // Posts fictícios
   mockPosts: Post[] = [
     {
+      isStatic: true,
       id: '1',
       author: {
         name: 'Maria Silva',
@@ -103,6 +105,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '2',
       author: {
         name: 'João Santos',
@@ -116,6 +119,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '3',
       author: {
         name: 'Ana Costa',
@@ -130,6 +134,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '4',
       author: {
         name: 'Pedro Oliveira',
@@ -143,6 +148,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '5',
       author: {
         name: 'Carla Ferreira',
@@ -156,6 +162,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '6',
       author: {
         name: 'Lucas Martins',
@@ -170,6 +177,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '7',
       author: {
         name: 'Juliana Rocha',
@@ -183,6 +191,7 @@ export class FeedComponent implements OnInit {
       liked: false
     },
     {
+      isStatic: true,
       id: '8',
       author: {
         name: 'Rafael Lima',
