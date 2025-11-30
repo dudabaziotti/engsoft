@@ -17,9 +17,9 @@ export class FocusRoomComponent {
   roomName = 'Sala de Foco';
 
   users = [
-    { name: 'Maria Silva', photoUrl: 'https://i.pravatar.cc/150?img=5' },
-    { name: 'João Santos', photoUrl: 'https://i.pravatar.cc/150?img=15' },
-    { name: 'Ana Costa', photoUrl: 'https://i.pravatar.cc/150?img=8' }
+    { name: 'Maria Silva', photoUrl: 'assets/images/penguin.png' },
+    { name: 'João Santos', photoUrl: 'assets/images/parrot.png' },
+    { name: 'Ana Costa', photoUrl: 'assets/images/squirrel.png' }
   ];
 
   startSession() {

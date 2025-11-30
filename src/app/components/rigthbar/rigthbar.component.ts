@@ -60,7 +60,7 @@ export class RigthbarComponent implements OnInit {
       id: '1',
       author: 'Laura Vieira',
       time: '2 dias atrás',
-      preview: 'This was the peak of electronics. This was also my family\'s first touch screen mobile.',
+      preview: 'Nessa semana, tive a oportunidade de conhecer a maior empresa fabricante de componentes do Brasil!',
       likes: 443,
       tag: '#aviacao'
     },
@@ -68,7 +68,7 @@ export class RigthbarComponent implements OnInit {
       id: '2',
       author: 'Pedro Klauss',
       time: '22h ago',
-      preview: 'Added a link to my collection - Weekly shelf',
+      preview: 'Estive trabalhando com a integração de bibliotecas em sistemas front-end e gostaria de compartilhar com a rede!',
       likes: 320,
       tag: '#quimica'
     },
@@ -76,7 +76,7 @@ export class RigthbarComponent implements OnInit {
       id: '3',
       author: 'Livia Mendes',
       time: '5 dias atrás',
-      preview: 'Added a link to my collection - Weekly shelf',
+      preview: 'Na maratona de programação, aprendemos diversas técnincas e diferentes soluções para problemas complexos.',
       likes: 289,
       tag: '#biologia'
     },

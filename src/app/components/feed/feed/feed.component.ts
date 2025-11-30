@@ -92,7 +92,7 @@ export class FeedComponent implements OnInit {
       id: '1',
       author: {
         name: 'Maria Silva',
-        photoUrl: 'https://i.pravatar.cc/150?img=5',
+        photoUrl: 'assets/images/penguin.png',
         role: 'Product Designer'
       },
       content: 'Acabei de lançar meu novo projeto de design system! Foram 3 meses de trabalho intenso, mas o resultado ficou incrível. Obrigada a todos que ajudaram no processo. 🎨✨ #design',
@@ -106,7 +106,7 @@ export class FeedComponent implements OnInit {
       id: '2',
       author: {
         name: 'João Santos',
-        photoUrl: 'https://i.pravatar.cc/150?img=12',
+        photoUrl: 'assets/images/parrot.png',
         role: 'Full Stack Developer'
       },
       content: 'Compartilhando minha jornada de aprendizado em React! Criei este tutorial completo sobre hooks que pode ajudar muita gente. O que acham? Feedback é sempre bem-vindo! 💻 #react',
@@ -119,7 +119,7 @@ export class FeedComponent implements OnInit {
       id: '3',
       author: {
         name: 'Ana Costa',
-        photoUrl: 'https://i.pravatar.cc/150?img=9',
+        photoUrl: 'assets/images/squirrel.png',
         role: 'UX Researcher'
       },
       content: 'Insights da minha última pesquisa com usuários: 89% dos participantes preferem interfaces minimalistas. Simplicidade é a chave! 📊',
@@ -133,7 +133,7 @@ export class FeedComponent implements OnInit {
       id: '4',
       author: {
         name: 'Pedro Oliveira',
-        photoUrl: 'https://i.pravatar.cc/150?img=15',
+        photoUrl: 'assets/images/flamingo.png',
         role: 'Mobile Developer'
       },
       content: 'Quem mais está animado com as novidades do Flutter 3.0? As melhorias de performance estão incríveis! 🚀',
@@ -146,7 +146,7 @@ export class FeedComponent implements OnInit {
       id: '5',
       author: {
         name: 'Carla Ferreira',
-        photoUrl: 'https://i.pravatar.cc/150?img=20',
+        photoUrl: 'assets/images/elephant.png',
         role: 'Tech Lead'
       },
       content: 'Dicas para iniciantes em programação:\n\n1. Pratique todos os dias\n2. Leia código de outras pessoas\n3. Construa projetos reais\n4. Não tenha medo de errar\n5. Faça networking\n\nQual dica você adicionaria? 💡',
@@ -159,7 +159,7 @@ export class FeedComponent implements OnInit {
       id: '6',
       author: {
         name: 'Lucas Martins',
-        photoUrl: 'https://i.pravatar.cc/150?img=33',
+        photoUrl: 'assets/images/fox.png',
         role: 'DevOps Engineer'
       },
       content: 'Acabei de automatizar todo nosso processo de deploy! De 2 horas para 5 minutos. A sensação é incrível! ⚡',
@@ -173,7 +173,7 @@ export class FeedComponent implements OnInit {
       id: '7',
       author: {
         name: 'Juliana Rocha',
-        photoUrl: 'https://i.pravatar.cc/150?img=44',
+        photoUrl: 'assets/images/rabbit.png',
         role: 'Data Scientist'
       },
       content: 'Trabalhando em um modelo de ML que prevê churn de clientes com 94% de acurácia. Machine Learning é fascinante! 🤖📈',
@@ -186,7 +186,7 @@ export class FeedComponent implements OnInit {
       id: '8',
       author: {
         name: 'Rafael Lima',
-        photoUrl: 'https://i.pravatar.cc/150?img=51',
+        photoUrl: 'assets/images/whale.png',
         role: 'Frontend Developer'
       },
       content: 'Alguém mais viciado em dark mode? Não consigo mais trabalhar sem ele! 🌙',
