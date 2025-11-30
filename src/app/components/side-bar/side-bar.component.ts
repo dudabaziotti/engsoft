@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from 'firebase/auth';
 
@@ -16,17 +18,35 @@ export class SideBarComponent implements OnInit {
     { icon: 'person', label: 'Perfil', route: '/perfil', active: false },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore,) {}
 
   ngOnInit(): void {
-    this.currentUser = getAuth().currentUser;
-    this.router.events.subscribe(() => {
-    const currentRoute = this.router.url;
+    this.afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.currentUser = null;
+        return;
+      }
 
-    this.menuItems.forEach(item => {
-      item.active = currentRoute.startsWith(item.route);
+      this.db.collection('users')
+        .doc(user.uid)
+        .valueChanges()
+        .subscribe(userDoc => {
+          this.currentUser = {
+            uid: user.uid,
+            email: user.email,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+            ...(userDoc || {}) 
+          };
+        });
     });
-  });
+
+    this.router.events.subscribe(() => {
+      const currentRoute = this.router.url;
+      this.menuItems.forEach(item => {
+        item.active = currentRoute.startsWith(item.route);
+      });
+    });
   }
 
   navigateTo(item: any): void {

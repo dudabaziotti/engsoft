@@ -29,7 +29,7 @@
         [alt]="currentUser.displayName"
         class="user-avatar">
       <div class="user-info">
-        <p class="user-name">{{ currentUser.displayName }}</p>
+        <span class="user-name">{{ currentUser?.name || currentUser?.displayName || 'Usuário' }}</span>
         <button class="logout-button" (click)="logout()">
           <span class="material-icons">logout</span>
         </button>
